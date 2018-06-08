@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="panel with-nav-tabs panel-primary">
+      <div class="panel-body">
+      <section>
+        <header>
+          <div class="row">
+            <div class="col-md-8">
+              <h3 style="color: blue">Angular Application with Spring Boot REST service</h3>
+            </div>
+            <div class="col-md-2">
+              </div>
+                <div class="col-md-2">
+                   <button type="button" class="btn btn-primary" (click)="redirectNewUserPage()" style="margin-top:10px">Add New Resource</button>
+                </div>
+            </div>
+
+        </header>
+      </section>
+
+      <section class="main">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>email</th>
+            <th>company</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.company}}</td>
+            <td>{{user.address}}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="editUserPage(user)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>

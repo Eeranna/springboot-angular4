@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="panel with-nav-tabs panel-primary">
+      <div class="panel-body">
+    <div class="col-md-6">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h3 style="color: blue">Support</h3>
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+            <span
+              *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+              class="help-block">Please enter a valid username!!</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+            <span
+              *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+              class="help-block">Please enter a valid email!!</span>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <div formArrayName="tracks">
+          <h4>Your Tracks</h4>
+          <button class="btn btn-default" type="submit" (click)="onAddTrack()">Add Tracks</button><br><br>
+          <div class="form-group" *ngFor="let hobbyControl of signupForm.get('tracks').controls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button type="button" class="btn btn-warning" (click)="redirectUserPage()">BackToHome</button>
+      </form>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="panel with-nav-tabs panel-primary">
+      <div class="panel-heading">
+        <h5>Total Spend  - <span class="badge"><span class="totalSpend">$ 133,973,686.4</span></span></h5>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-tabs">
+          <li class=""><a (click)="monthlySpend()" data-toggle="tab" class="btn btn-primary btn-group-sm"><i class="glyphicon glyphicon-calendar"></i>&nbsp;Monthly</a></li>&nbsp;
+          <li class="active"><a (click)="quarterlySpend()" data-toggle="tab" class="btn btn-primary btn-group-sm"><i class="glyphicon glyphicon-signal"></i>&nbsp;Quarterly</a></li>
+        </ul>
+        <div id="totalspendchart"></div>
+      </div>
+    </div>
+    </div>
+      </div>
+  </div>
+</div>

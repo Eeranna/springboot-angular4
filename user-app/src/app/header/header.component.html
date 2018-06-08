@@ -1,0 +1,69 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" *ngIf="authService.isAuthenticated()">
+  <div class="navbar-header" style="margin-top:20px">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <button (click)="toggleMenu()" class="hamburger">
+      <span>toggle menu</span>
+    </button>
+    <app-menu [@slideInOut]="menuState"></app-menu>
+
+  </div>
+  <div class="collapse navbar-collapse" id="myNavbar" style="margin-top:20px">
+    <ul class="nav navbar-nav">
+      <a class="navbar-brand" id="logo" target="_blank" href="http://www.cisco.com/" style="margin-top:15px"><h4>Cisco.com Worldwide Home</h4></a>
+      <li routerLinkActive="active"><a [routerLink]="['/home']"><h4>Dashboard</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/user']"><h4>Resources</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/create']"><h4>NewResource</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/company']"><h4>Organization</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/tech']"><h4>Techs</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/support']"><h4>Support</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/tracks']"><h4>Tracks</h4></a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/animations']"><h4>Transition</h4></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs hidden-sm" style="margin-top:20px">
+        <select class="selectpicker headerSelect" data-width="80px">
+          <option *ngFor="let year of yearData" [value]="year">{{year}}</option>
+        </select>
+      </li>
+      <li class="hidden-xs hidden-sm" style="margin-top:20px">
+        <select>
+          <option *ngFor="let country of countryData" [value]="country">{{country}}</option>
+        </select>
+      </li>
+      <!--<ul class="nav navbar-nav">
+          <li><a style="cursor: pointer" (click)="onLogout()"><h4>Logout</h4></a></li>
+      </ul>-->
+      <li class="dropdown" style="margin-top:10px"><a href="#" class="dropdown-toggle setting-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../assets/icon/feedback.png" width="32" height="21" alt=""/></a>
+        <ul class="dropdown-menu">
+          <li><a>Edit Dashbord</a></li>
+          <li><a>Edit Alert</a></li>
+          <li><a>Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a>Edit Bot</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <!--<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../assets/img/user-photo-thumb-1.png"></a>-->
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <div class="cui">
+					<span class="badge-wrapper base-margin-right">
+						<img class="thumb thumb--small thumb--bordered" src="../assets/img/user-photo-thumb-1.png" style="max-width: 40%">
+						<span class="badge badge--tiny badge--danger badge--bordered-alt">3</span>
+					</span>
+          </div>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a>Edit Profile</a></li>
+          <li><a>Change Password</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
